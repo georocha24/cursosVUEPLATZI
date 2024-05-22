@@ -12,10 +12,23 @@
         const vm =  Vue.createApp({
             data(){
                 return {
-                    img: "https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w600/2023/10/free-images.jpg"
+                    text: "Hola Vue"
                 };
             },
-            template: `<img v-bind:src="img" v-bind:alt="img">` //directiva de vue.js v-text
+            methods: {
+                input(e) {
+                    console.log(e.target.value);
+                    this.text = e.target.value;
+                }
+            },
+            template: `
+                <p>{{ text }}</p>
+                <input 
+                    type="text" 
+                    v-on:input="input" 
+                    v-bind:value="text"
+                />
+            ` //directiva de vue.js v-text
         }).mount("#app");
         console.log(vm);
     </script>
