@@ -25,8 +25,8 @@
                 <p>{{ text }}</p>
                 <input 
                     type="text" 
-                    v-on:input="input" 
-                    v-bind:value="text"
+                    @input="input" 
+                    :value="text"
                 />
             ` //directiva de vue.js v-text
         }).mount("#app");
