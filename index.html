@@ -15,26 +15,20 @@
                     text: " Hola Vue "
                 }
             },
-            provide() {
-                return {
-                    otroTexto: this.text
-                };
-            },
             template: `
-                <div>{{ text }}</div>
-                <otro />
+                <v-button ref="elemento" :label="text"></v-button>
             `
         });
 
-        app.component("otro", {
-            template: `<tercer />`
+        app.component("v-button", {
+            props: ["label"],
+            template: `<button>{{ label }}</button>`
         });
-
-        app.component("tercer", {
-            inject: ["otroTexto"],
-            template: `<div>{{ otroTexto }}</div>`
-        })
         const vm = app.mount("#app");
+        console.log(vm.$root);
+        console.log(vm.$el); //acceder al html del componente en el DOM
+        console.log(vm.$refs.elemento); // accede a los refs del input html
+        console.log(vm.$props);
     </script>
 </body>
 </html>
